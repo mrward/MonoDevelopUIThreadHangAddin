@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ExtensionModel>
+	<Runtime>
+	</Runtime>
+
+	<Extension path="/MonoDevelop/Ide/Commands">
+		<Category id="UIThreadHang" _name="UI Thread Hang">
+		<Command
+				id="UIThreadHangAddin.HangUIThread"
+				_label = "Hang UI Thread"
+				defaultHandler="UIThreadHangAddin.HangUIThreadHandler" />
+		<Command
+				id="UIThreadHangAddin.HangUIThreadForTenSeconds"
+				_label = "Hang UI Thread (10 seconds)"
+				defaultHandler="UIThreadHangAddin.HangUIThreadForTenSecondsHandler" />
+	</Category>
+	</Extension>
+
+	<Extension path="/MonoDevelop/Ide/MainMenu/Tools">
+		<SeparatorItem id = "CustomToolsSection" _label = "Custom"/>
+		<CommandItem id = "MonoDevelop.Ide.Commands.ToolCommands.ToolList" />
+		<CommandItem id = "MonoDevelop.Ide.Commands.ToolCommands.EditCustomTools" />
+		<SeparatorItem id = "OptionsSection" />
+
+		<SeparatorItem
+			id="UIThreadHangSection"
+			insertafter="MonoDevelop.Ide.Commands.ToolCommands.EditCustomTools"
+			insertbefore="OptionsSection"
+			_label="UI Thread Hang" />
+		<CommandItem
+			id="UIThreadHangAddin.HangUIThread"
+			insertafter="UIThreadHangSection"
+			insertbefore="OptionsSection" />
+		<CommandItem
+			id="UIThreadHangAddin.HangUIThreadForTenSeconds"
+			insertafter="UIThreadHangAddin.HangUIThread"
+			insertbefore="OptionsSection" />
+	</Extension>
+</ExtensionModel>
