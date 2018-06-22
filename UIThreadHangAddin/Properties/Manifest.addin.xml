@@ -13,6 +13,10 @@
 				id="UIThreadHangAddin.HangUIThreadForTenSeconds"
 				_label = "Hang UI Thread (10 seconds)"
 				defaultHandler="UIThreadHangAddin.HangUIThreadForTenSecondsHandler" />
+		<Command
+				id="UIThreadHangAddin.HangUIThreadForThirtySeconds"
+				_label = "Hang UI Thread (30 seconds)"
+				defaultHandler="UIThreadHangAddin.HangUIThreadForThirtySecondsHandler" />
 	</Category>
 	</Extension>
 
@@ -34,6 +38,10 @@
 		<CommandItem
 			id="UIThreadHangAddin.HangUIThreadForTenSeconds"
 			insertafter="UIThreadHangAddin.HangUIThread"
+			insertbefore="OptionsSection" />
+		<CommandItem
+			id="UIThreadHangAddin.HangUIThreadForThirtySeconds"
+			insertafter="UIThreadHangAddin.HangUIThreadForTenSeconds"
 			insertbefore="OptionsSection" />
 	</Extension>
 </ExtensionModel>

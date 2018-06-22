@@ -1,5 +1,5 @@
 ﻿//
-// UIThreadLocker.cs
+// HangUIThreadForThirtySecondsHandler.cs
 //
 // Author:
 //       Matt Ward <matt.ward@microsoft.com>
@@ -24,40 +24,15 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System;
-using System.Threading;
-using MonoDevelop.Core;
+using MonoDevelop.Components.Commands;
 
 namespace UIThreadHangAddin
 {
-	static class UIThreadLocker
+	public class HangUIThreadForThirtySecondsHandler : CommandHandler
 	{
-		public static void HangForever ()
+		protected override void Run ()
 		{
-			while (true) {
-				HangForTenSeconds ();
-			}
-		}
-
-		public static void HangForTenSeconds ()
-		{
-			HangFor (new TimeSpan (0, 0, seconds: 10));
-		}
-
-		public static void HangForThirtySeconds ()
-		{
-			HangFor (new TimeSpan (0, 0, seconds: 30));
-		}
-
-		public static void HangFor (TimeSpan time)
-		{
-			if (Runtime.IsMainThread) {
-				Thread.Sleep ((int)time.TotalMilliseconds);
-			} else {
-				Runtime.RunInMainThread (() => {
-					HangFor (time);
-				});
-			}
+			UIThreadLocker.HangForThirtySeconds ();
 		}
 	}
 }
